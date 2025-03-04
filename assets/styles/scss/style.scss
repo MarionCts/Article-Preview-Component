@@ -1,0 +1,292 @@
+/***** RESET *****/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: "Manrope", serif;
+}
+
+/***** DESIGN SYSTEM *****/
+
+/* Colors */
+
+$White: rgb(255,255,255);
+$Grey-900: rgb(72, 85, 106);
+$Grey-500: rgb(110, 128, 152);
+$Grey-400: rgb(157, 174, 194);
+$Grey-200: rgb(236, 242, 248);
+
+/* Spacings */
+
+$spacing200: 1.6rem;
+$spacing300: 2.4rem;
+$spacing550: 3rem;
+$spacing400: 3.2rem;
+$spacing500: 4rem;
+$spacing600: 4.8rem;
+$spacing700: 5.6rem;
+$spacing800: 6.4rem;
+$spacing1300: 10.4rem;
+$spacing2000: 16rem;
+
+/* Typography Presets */
+
+$TextPresets: (
+    TextPreset1: (700, 2rem, 130%, 0.25%, none),
+    TextPreset2Bold: (700, 1.3rem, 140%, 0.12%, none),
+    TextPreset2Medium: (500, 1.3rem, 140%, 0.12%, none),
+    TextPreset3: (400, 1.3rem, 140%, 25%, uppercase),
+);
+
+@mixin TextPreset($Preset){
+    $settings: map-get($TextPresets, $Preset);
+    font-weight: nth($settings, 1);
+    font-size: nth($settings, 2);
+    line-height: nth($settings, 3);
+    letter-spacing: nth($settings, 4);
+    text-transform: nth($settings, 5);
+};
+
+/* Flex Preset */
+
+$FlexPresets: (
+    FlexColumnCenter: (flex, column, center, center),
+    FlexColumnStart: (flex, column, center, flex-start),
+    FlexRowCenter: (flex, row, center, center),
+    FlexRowStart: (flex, row, flex-start, center),
+    FlexRowBetween: (flex, row, space-between, center),
+);
+
+@mixin FlexPreset($Preset){
+    $settings: map-get($FlexPresets, $Preset);
+    display: nth($settings, 1);
+    flex-direction: nth($settings, 2);
+    justify-content: nth($settings, 3);
+    align-items: nth($settings, 4);
+};
+
+/* Shadow Preset */
+
+$ShadowPreset: (
+    Shadow1: (0px 40px 40px -10px rgba(201, 213, 225, 0.5)),
+);
+
+@mixin ShadowPreset($Preset){
+    box-shadow: map-get($ShadowPreset, $Preset);
+};
+
+/***** BACKGROUND *****/
+
+body{
+    background-color: $Grey-200;
+
+    main{
+        @include FlexPreset(FlexColumnCenter);
+        height: 100vh;
+
+        .main__article{
+            @include FlexPreset(FlexRowCenter);
+            max-width: clamp(32.7rem, 80%, 73rem);
+            max-height: 28rem;
+            background-color: $White;
+            border-radius: 1rem;
+            @include ShadowPreset(Shadow1);
+        }
+    }
+}
+
+/***** IMAGE *****/
+
+.article__image{
+    max-width: 28.5rem;
+    min-height: 100%;
+    border-radius: 1rem 0 0 1rem;
+}
+
+/***** ARTICLE CONTENT *****/
+
+.article__content{
+    position: relative;
+    @include FlexPreset(FlexColumnStart);
+    gap: $spacing300;
+    padding: $spacing550 $spacing500;
+
+    .article__content--title{
+        @include TextPreset(TextPreset1);
+        color: $Grey-900;
+    }
+
+    .article__content--description{
+        @include TextPreset(TextPreset2Medium);
+        color: $Grey-500;
+    }
+
+}
+
+.article__meta{
+    @include FlexPreset(FlexRowBetween);
+    width: 100%;
+    gap: $spacing200;
+
+    .article__meta--image{
+        height: $spacing500;
+        width: $spacing500;
+    }
+}
+
+.article__meta--information{
+    @include FlexPreset(FlexRowStart);
+    gap: $spacing200;
+
+    .author-and-date{
+
+        .author-name{
+            @include TextPreset(TextPreset2Bold);
+            color: $Grey-900;
+        }
+
+        .article-date{
+            @include TextPreset(TextPreset2Medium);
+            color: $Grey-400;
+        }
+    }
+}
+
+/* Share button */
+
+.sharebutton{
+    z-index: 100;
+    background-color: $Grey-200;
+    border-radius: 100%;
+    height: $spacing400;
+    width: $spacing400;
+    border: none;
+    cursor: pointer;
+}
+
+.sharebutton.active{
+    background-color: $Grey-500;
+
+    path{
+        fill: $White;
+    }
+}
+
+/* display function of the share button for JS */
+
+.display__none{
+    display: none;
+}
+
+.display__none.active{
+    display: contents;
+}
+
+/* Share button popup design */
+
+.sharebutton__popup{
+    display: none;
+    position: absolute;
+    right: -15%;
+    bottom: 35%;
+    @include FlexPreset(FlexRowCenter);
+    background-color: $Grey-900;
+    border-radius: 1rem;
+    min-width: 24.8rem;
+    padding: 1.8rem 3.8rem;
+    gap: $spacing300;
+    @include ShadowPreset(Shadow1);
+
+    .sharebutton__popup--text{
+        @include TextPreset(TextPreset3);
+        color: $Grey-400;
+    }
+
+    .sharebutton__popup--icons{
+        @include FlexPreset(FlexRowCenter);
+        color: $White;
+        gap: $spacing200;
+    }
+}
+
+.sharebutton__popup--arrow{
+    position: absolute;
+    background-color: $Grey-900;
+    height: 2.4rem;
+    width: 2.4rem;
+    rotate: 45deg;
+    right: 45%;
+    bottom: -20%;
+}
+
+
+
+/***** MEDIA QUERIES *****/
+
+/* Tablet */
+
+@media screen and (max-width: 1024px) {
+
+    body{
+        main{
+            .main__article {
+            min-height: 34.6rem;
+            }
+        }
+    }   
+    
+    .article__image{
+        min-height: 100%;
+        min-width: 22.9rem;
+    }
+}
+
+/* Mobile */
+
+@media screen and (max-width: 540px) {
+
+    body{
+        main{
+            .main__article {
+            @include FlexPreset(FlexColumnCenter);
+            max-height: 100%;
+            }
+        }
+    }   
+
+    .article__content{
+        padding: $spacing400 $spacing550 1.8rem;
+    }
+
+    .article__meta{
+        padding-top: $spacing300;
+    }
+
+    .article__image{
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 20rem;
+        max-height: 20rem;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .sharebutton__popup{
+        position: absolute;
+        justify-content: flex-start;
+        border-radius: 0;
+        min-width: 100%;
+        height: 7.6rem;
+        bottom: 0;
+        right: 0;
+        border-radius: 0 0 1rem 1rem;
+
+        .sharebutton__popup--arrow{
+            display: none;
+        }
+    }
+}

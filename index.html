@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="assets/styles/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <script src="assets/scripts/script.js" defer></script>
+  <title>Frontend Mentor | Article preview component</title>
+</head>
+<body>
+  <main>
+    <article class="main__article">
+      <img src="assets/images/drawers.jpg" class="article__image" alt="article illustration">
+      <div class="article__content">
+        <h1 class="article__content--title">Shift the overall look and feel by adding these wonderful 
+          touches to furniture in your home</h1>
+
+        <p class="article__content--description">Ever been in a room and felt like something was missing? Perhaps 
+          it felt slightly bare and uninviting. I’ve got some simple tips 
+          to help you make any room feel complete.</p>
+
+        <div class="article__meta">
+          <div class="article__meta--information">
+            <img src="assets/images/avatar-michelle.jpg" class="article__meta--image" alt="author's profile picture">
+            <div class="author-and-date">
+              <p class="author-name" rel="author">Michelle Appleton</p>
+              <p class="article-date">28 Jun 2020</p>
+            </div>
+          </div>
+          <div class="display__none display__none.active" id="display__none">
+            <div id="sharebutton__popup" class="sharebutton__popup">
+              <span class="sharebutton__popup--text">Share</span>
+              <div class ="sharebutton__popup--icons">
+                <a href="#" alt="link to share on facebook"><img src="assets/images/icon-facebook.svg" class="sharebutton__popup--icon" alt="share on Facebook"></a>
+                <a href="#" alt="link to share on twitter"><img src="assets/images/icon-twitter.svg" class="sharebutton__popup--icon" alt="share on Twitter"></a>
+                <a href="#" alt="link to share on pinterest"><img src="assets/images/icon-pinterest.svg" class="sharebutton__popup--icon" alt="share on Pinterest"></a>
+              </div>
+              <div class="sharebutton__popup--arrow"></div>
+            </div>
+          </div>
+          <button id="sharebutton" class="sharebutton" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="13"><path fill="#6E8098" d="M15 6.495L8.766.014V3.88H7.441C3.33 3.88 0 7.039 0 10.936v2.049l.589-.612C2.59 10.294 5.422 9.11 8.39 9.11h.375v3.867L15 6.495z"/></svg></button>
+        </div>
+      </div>
+  </article>
+  </main>
+</body>
+</html>
