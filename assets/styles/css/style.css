@@ -61,8 +61,10 @@ body main .main__article {
 
 /***** IMAGE *****/
 .article__image {
-  max-width: 28.5rem;
+  background-image: url("../../images/drawers.jpg");
+  min-width: 28.5rem;
   min-height: 100%;
+  background-size: cover;
   border-radius: 1rem 0 0 1rem;
 }
 
@@ -122,6 +124,7 @@ body main .main__article {
 .article__meta .article__meta--image {
   height: 4rem;
   width: 4rem;
+  border-radius: 100%;
 }
 
 .article__meta--information {
